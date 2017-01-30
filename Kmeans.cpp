@@ -81,6 +81,18 @@ signed int Kmeans::predict(FeaturedVector &testPoint) {
 	return this->getClosestClusterIndex(testPoint);
 }
 
+double Kmeans::getScore() {
+	int correct = 0;
+	int totalPoints = 0;
+
+	for (Cluster c : clusters) {
+		totalPoints += c.getTotalPoints();
+		correct += c.getCorrect();
+	}
+
+	return (double)correct / totalPoints;
+}
+
 void Kmeans::displayClusters() {
 	for (Cluster c : this->clusters) {
 		c.displayCluster();

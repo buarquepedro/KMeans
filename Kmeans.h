@@ -13,6 +13,7 @@ public:
 	signed int predict(FeaturedVector &testPoint);
 	signed int getClosestClusterIndex(FeaturedVector &featuredVector);
 	void displayClusters();
+	double getScore();
 
 private:
 	std::vector<Cluster> clusters;

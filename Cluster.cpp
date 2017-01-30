@@ -57,6 +57,22 @@ bool Cluster::removeFromCluster(signed int featureID) {
 	return false;
 }
 
+signed int Cluster::getTotalPoints() {
+	return this->cluster.size();
+}
+
+signed int Cluster::getCorrect() {
+	int correct = 0;
+
+	for (FeaturedVector &f : this->cluster) {
+		if (f.getTargetClass() == this->clusterIndex) {
+			correct++;
+		}
+	}
+
+	return correct;
+}
+
 void Cluster::displayCluster() {
 	std::cout << "CLUSTER " << this->clusterIndex << ": " << std::endl;
 

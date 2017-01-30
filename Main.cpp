@@ -11,7 +11,7 @@ int main(int argc, char const *argv[]) {
 
 	Kmeans kmeans(2);
 
-	ifstream ifs("data/breast-cancer.txt");
+	ifstream ifs("data/breast-cancer-mini.txt");
 	vector<FeaturedVector> dataSet;
 	signed int index = 0;
 	string line;
@@ -30,7 +30,14 @@ int main(int argc, char const *argv[]) {
 		}
 
 		vetor.erase(vetor.begin());
-		double targetClass = vetor.back();
+		int targetClass = vetor.back();
+
+		if (targetClass == 2) {
+			targetClass = 0;
+		} else {
+			targetClass = 1;
+		}
+
 		vetor.pop_back();
 		FeaturedVector featuredVector(vetor);
 		featuredVector.setVectorIndex(index);
@@ -47,6 +54,7 @@ int main(int argc, char const *argv[]) {
 
 	kmeans.fit(dataSet);
 	kmeans.displayClusters();
+	cout << kmeans.getScore() << endl;
 
 	return 0;
 }

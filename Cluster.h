@@ -17,6 +17,8 @@ public:
 	void setCentroid(FeaturedVector &centroid);
 	bool removeFromCluster(signed int featureID);
 	signed int getClusterIndex();
+	signed int getTotalPoints();
+	signed int getCorrect();
 	FeaturedVector& getCentroid();
 
 private:
